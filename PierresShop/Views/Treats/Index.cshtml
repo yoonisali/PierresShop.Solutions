@@ -1,0 +1,23 @@
+@{
+  Layout = "_Layout";
+}
+
+@using PierresShop.Models;
+
+
+<h2>Treats for @User.Identity.Name</h2><br>
+
+<hr>
+@if (@Model.Count == 0)
+{
+  <h5>No Treats have been added yet!</h5><br>
+}
+    <ul>
+      @foreach (Treat treat in Model)
+      {
+        <li style="list-style-position: inside; padding-right: 45px;">@Html.ActionLink($"{treat.Name}", "Details", new { id = treat.TreatId })
+        </li>
+      }
+    </ul>
+    <p>@Html.ActionLink("Add a new Treat!", "Create")</p>
+<hr>

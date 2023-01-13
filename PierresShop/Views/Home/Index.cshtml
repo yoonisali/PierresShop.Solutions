@@ -2,52 +2,49 @@
   Layout = "_Layout";
 }
 
-@using PierresShop.Models;
+@using PierresShop.Models
 
-<h1>Welcome to Pierre's Shop!</h1>
+<h1>Welcome to Pierre's Sweets and Treats Shop!</h1>
 
 
 <hr>
+<div class="row" style="padding-top: 20px;">
+<div class="col-6">
+<h4>Treats</h4>
+@if (Model["treats"].Length == 0)
+{
+  <p>No Treats have been added yet!</p>
+} 
+<ul>
+  @foreach (Treat treats in Model["treats"])
+  {
+    <li style="list-style-position: inside; padding-right: 45px;">@Html.ActionLink(@treats.Name, "Details", "Treats", new { id = @treats.TreatId})</li>
+  }
+</ul>
+</div>
+<div class="col-6">
 @if (User.Identity.IsAuthenticated)
 {
-  <div class="row" style="padding-top: 20px;">
-<div class="col-6">
-    <h4>Flavors</h4>
-
-    @if (@ViewBag.Flavor.Count == 0)
+  <h4>Flavors for @User.Identity.Name</h4>
+  @if (Model["flavors"].Length == 0)
+  {
+    <p>No flavors have been added yet!</p>
+  } 
+  <ul>
+    @foreach (Flavor flavor in Model["flavors"])
     {
-      <h3>No flavors have been added yet!</h3>
-    } 
-    <ul>
-      @foreach(Flavor flavor in ViewBag.Flavor)
-      {
-        <p>@Html.ActionLink($"{flavor.Name}", "Details", "Flavors", new { id = flavor.FlavorId })</p>
-      }
-    </ul>  
-  </div>
-
-
-<div class="col-6">
-    <h4>Treats</h4>
-
-    @if (@ViewBag.Treat.Count == 0)
-    {
-      <h3>No treats have been added yet!</h3>
-    } 
-
-    <ul>
-      @foreach (Treat treat in ViewBag.Treat)
-      {
-        <p>@Html.ActionLink($"{treat.Name}", "Details", "Treats", new { id = treat.TreatId })</p>
-      } 
-    </ul>  
-  </div>
-</div>
+      <li style="list-style-position: inside;">@Html.ActionLink(@flavor.Name, "Details", "Flavors", new { id = @flavor.FlavorId})</li>
+    }
+  </ul>
 }
-else 
+
+else
 {
-  <p>Please @Html.ActionLink("log in", "LogIn", "Account") to view or manage your treats and flavors.</p>
+  <h4>Flavors</h4>
+  <p>Please @Html.ActionLink("log in", "LogIn", "Account") to view or manage your video games.</p>
 }
-
+</div>
+</div>
 <p>@Html.ActionLink("Log out", "Index", "Account")</p>
 <hr>
+
