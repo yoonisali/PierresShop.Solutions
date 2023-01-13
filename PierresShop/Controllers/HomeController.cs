@@ -1,15 +1,25 @@
 using Microsoft.AspNetCore.Mvc;
+using PierresShop.Models;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace PierresShop.Controllers 
+namespace PierresShop.Controllers
 {
-    public class HomeController : Controller
+  public class HomeController : Controller
+  {
+
+    private readonly PierresShopContext _db;
+
+    public HomeController(PierresShopContext db)
     {
-
-      [HttpGet("/")]
-      public ActionResult Index()
-      {
-        return View();
-      }
-
+      _db = db;
     }
+
+    public ActionResult Index()
+    {
+      ViewBag.Flavors = new List<Flavor>( _db.Flavors);
+      ViewBag.Treats = new List<Treat>( _db.Treats);
+      return View( _db.Flavors.ToList());
+    }
+  }
 }
