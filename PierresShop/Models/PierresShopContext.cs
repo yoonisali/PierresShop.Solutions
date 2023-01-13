@@ -1,11 +1,10 @@
-// Needed for accessing database
-
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 
 namespace PierresShop.Models 
 {
-  public class PierresShopContext : DbContext 
+  public class PierresShopContext : IdentityDbContext<ApplicationUser>
   {
     public DbSet<Treat> Treats { get; set; } 
     public DbSet<Flavor> Flavors { get; set; } 

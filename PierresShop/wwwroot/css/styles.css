@@ -1,8 +1,12 @@
 .jumbotron {
   text-align: center;
-  background-color: rgb(104, 184, 139);
+  background-color: rgb(123, 104, 184);
 }
 
 #jumbotron {
   font-size: 300%;
+}
+
+body {
+  text-align: center;
 }
