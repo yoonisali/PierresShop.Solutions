@@ -40,5 +40,14 @@ namespace PierresShop.Controllers
         return RedirectToAction("Index", "Home");
       }
     }
+
+    public ActionResult Details(int id)
+        {
+            Treat thisTreat = _db.Treats
+                .Include(treat => treat.JoinEntities)
+                .ThenInclude(join => join.Flavor)
+                .FirstOrDefault(treat => treat.TreatId == id);
+            return View(thisTreat);
+        }
   }
 }

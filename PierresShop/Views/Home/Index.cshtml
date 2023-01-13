@@ -4,13 +4,14 @@
 
 @using PierresShop.Models
 
-<h1>Welcome to Pierre's Sweets and Treats Shop!</h1>
+<h3>Welcome to Pierre's Sweets and Treats Shop!</h3>
 
 
 <hr>
 <div class="row" style="padding-top: 20px;">
 <div class="col-6">
-<h4>Treats</h4>
+  
+<h4>Treats for @User.Identity.Name</h4>
 @if (Model["treats"].Length == 0)
 {
   <p>No Treats have been added yet!</p>
