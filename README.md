@@ -2,7 +2,7 @@
 
 #### By: _**Yoonis Ali**_
 
-#### _A C# application that demonstartes the many to many relationship with login and authentication using Identity.
+#### _A C# application that demonstartes the many to many relationship with login and authentication using Identity._
 
 ## Technologies Used
 
