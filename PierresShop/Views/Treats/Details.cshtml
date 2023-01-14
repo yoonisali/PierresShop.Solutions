@@ -11,11 +11,11 @@
 
 @if (@Model.JoinEntities.Count == 0)
 {
-    <p>This Treat does not have any Flavors yet!</p>
+    <p>This treat does not have any flavors yet!</p>
 }
 else
 {
-    <h4>This Treat has the following Flavors:</h4>
+    <h6>This treat has the following flavors:</h6>
     <ul>
     @foreach (TreatFlavor join in Model.JoinEntities)
         {

@@ -14,7 +14,7 @@
 <ul>
   @foreach (Flavor flavor in Model)
   {
-    <li style="list-style-position: inside;">@Html.ActionLink($"{flavor.Name}", "Details", new { id = flavor.FlavorId })
+    <li style="list-style-position: inside; padding-right: 45px;">@Html.ActionLink($"{flavor.Name}", "Details", new { id = flavor.FlavorId })
     </li>
   }
 </ul>
