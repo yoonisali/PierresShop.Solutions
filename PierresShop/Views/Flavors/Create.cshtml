@@ -1,0 +1,15 @@
+@{
+  Layout = "_Layout";
+}
+
+@model PierresShop.Models.Flavor
+
+<h4>Add a new flavor!</h4>
+
+@using (Html.BeginForm())
+{
+    
+    @Html.TextBoxFor(model => model.Name, new { placeholder = "Name", style = "text-align: center; border-radius: 10px 10px "})<br><br>
+
+    <input type="submit" value="Add!" class="btn btn-dark" />
+}
