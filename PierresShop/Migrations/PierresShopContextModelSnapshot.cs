@@ -220,12 +220,7 @@ namespace PierresShop.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("varchar(255)");
-
                     b.HasKey("FlavorId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Flavors");
                 });
@@ -239,7 +234,12 @@ namespace PierresShop.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("longtext");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("varchar(255)");
+
                     b.HasKey("TreatId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Treats");
                 });
@@ -316,7 +316,7 @@ namespace PierresShop.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("PierresShop.Models.Flavor", b =>
+            modelBuilder.Entity("PierresShop.Models.Treat", b =>
                 {
                     b.HasOne("PierresShop.Models.ApplicationUser", "User")
                         .WithMany()

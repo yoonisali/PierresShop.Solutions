@@ -11,7 +11,7 @@ using PierresShop.Models;
 namespace PierresShop.Migrations
 {
     [DbContext(typeof(PierresShopContext))]
-    [Migration("20230113211852_AddEntities")]
+    [Migration("20230114010857_AddEntities")]
     partial class AddEntities
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -236,7 +236,12 @@ namespace PierresShop.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("longtext");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("varchar(255)");
+
                     b.HasKey("TreatId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Treats");
                 });
@@ -311,6 +316,15 @@ namespace PierresShop.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("PierresShop.Models.Treat", b =>
+                {
+                    b.HasOne("PierresShop.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("PierresShop.Models.TreatFlavor", b =>

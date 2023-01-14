@@ -11,38 +11,39 @@
 <div class="row" style="padding-top: 20px;">
 <div class="col-6">
   
-<h4>Treats for @User.Identity.Name</h4>
-@if (Model["treats"].Length == 0)
+<h4>Flavors for @User.Identity.Name</h4>
+@if (Model["flavors"].Length == 0)
 {
-  <p>No Treats have been added yet!</p>
+  <p>No flavors have been added yet!</p>
 } 
 <ul>
-  @foreach (Treat treats in Model["treats"])
+  @foreach (Flavor flavors in Model["flavors"])
   {
-    <li style="list-style-position: inside; padding-right: 45px;">@Html.ActionLink(@treats.Name, "Details", "Treats", new { id = @treats.TreatId})</li>
+    <li style="list-style-position: inside; padding-right: 45px;">@Html.ActionLink(@flavors.Name, "Details", "Flavors", new { id = @flavors.FlavorId})</li>
   }
 </ul>
 </div>
+
 <div class="col-6">
 @if (User.Identity.IsAuthenticated)
 {
-  <h4>Flavors for @User.Identity.Name</h4>
-  @if (Model["flavors"].Length == 0)
+  <h4>Treats for @User.Identity.Name</h4>
+  @if (Model["treats"].Length == 0)
   {
-    <p>No flavors have been added yet!</p>
+    <p>No treats have been added yet!</p>
   } 
   <ul>
-    @foreach (Flavor flavor in Model["flavors"])
+    @foreach (Treat treat in Model["treats"])
     {
-      <li style="list-style-position: inside;">@Html.ActionLink(@flavor.Name, "Details", "Flavors", new { id = @flavor.FlavorId})</li>
+      <li style="list-style-position: inside;">@Html.ActionLink(@treat.Name, "Details", "Treats", new { id = @treat.TreatId})</li>
     }
   </ul>
 }
 
 else
 {
-  <h4>Flavors</h4>
-  <p>Please @Html.ActionLink("log in", "LogIn", "Account") to view or manage your video games.</p>
+  <h4>Treats</h4>
+  <p>Please @Html.ActionLink("log in", "LogIn", "Account") to view or manage your treats and flavors.</p>
 }
 </div>
 </div>
